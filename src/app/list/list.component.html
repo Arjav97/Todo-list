@@ -1,0 +1,31 @@
+<label>Enter List Name:</label><br>
+<div>
+    <input type="text" placeholder="Enter name" required [(ngModel)]="newTodoText" #textcontrol="ngModel"/>
+    <button  (click)="addItem()" [disabled]="textcontrol.invalid">Add</button>
+    <br>
+    <span *ngIf="textcontrol.invalid && textcontrol.touched">Text is required</span>
+    </div>
+    <br><br>
+    <div>
+      
+      <li *ngFor="let todo of todos" >
+        
+        <input type="checkbox"  [(ngModel)]="todo.isCompleted" (change)="updateCheckbox(todo)">
+        
+        <label [class.modify]="todo.isCompleted">{{todo.text}}</label> 
+        
+        <a routerLink="/detail/{{todo._id}}"> <button>Details</button> </a>
+        
+        <button (click)="deleteItem(todo)">delete</button>
+      
+      </li>
+    
+    </div>
+    
+    <div>
+      {{ newTodoText }}
+    </div>
+    <br><br>
+    <div>
+      {{ todos | json }}
+    </div>  

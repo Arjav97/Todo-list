@@ -1,0 +1,14 @@
+<div>
+  List Text : {{todo?.text}}
+</div>
+
+<div>
+Enter Description : <input type="text" required  [(ngModel)]="newdesc" #textcontrol="ngModel">
+ <button (click)="Save(newdesc)" [disabled]="textcontrol.invalid">Save</button>
+</div>
+
+<button (click)="goback()">Go Back</button>
+<br><br>
+
+ Description:<p *ngIf="todo?.description">{{todo?.description}}</p>
+
